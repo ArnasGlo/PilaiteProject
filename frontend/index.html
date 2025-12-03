@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Pilaite — demo</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<main>
+    <h1>Pilaite — Spots demo</h1>
+
+    <section id="auth">
+        <h2>Auth</h2>
+        <div id="registerBox">
+            <h3>Register</h3>
+            <input id="regEmail" placeholder="email">
+            <input id="regPassword" placeholder="password" type="password">
+            <input id="regConfirm" placeholder="confirm password" type="password">
+            <button id="btnRegister">Register</button>
+            <div id="regMsg"></div>
+        </div>
+
+        <div id="loginBox">
+            <h3>Login</h3>
+            <input id="loginEmail" placeholder="email">
+            <input id="loginPassword" placeholder="password" type="password">
+            <button id="btnLogin">Login</button>
+            <div id="loginMsg"></div>
+        </div>
+
+        <div id="sessionActions">
+            <button id="btnMe">Get /me</button>
+            <button id="btnLogout">Logout</button>
+            <pre id="meOut"></pre>
+        </div>
+    </section>
+
+    <section id="spots">
+        <h2>Spots</h2>
+        <div>
+            <button id="btnPublicSpots">Get Public Spots (/spots/)</button>
+            <button id="btnProtectedSpots">Get Protected Spots (/spots/all)</button>
+            <button id="btnNatureSpots">Get Nature Spots(/spots/public/category/Gamta)</button>
+            <button id="btnTreniruokliaiSpots">Get Lauko treniruokliai Spots(/spots/public/category/Lauko_treniruokliai)</button>
+            <button id="btnSecretSpots">Get Secret Spots (/spots/category/Slaptos_vietos)</button>
+        </div>
+        <div id="spotsOut"></div>
+    </section>
+
+    <section id="health">
+        <h2>Health</h2>
+        <button id="btnHealth">Check /public/health</button>
+        <pre id="healthOut"></pre>
+    </section>
+
+    <section id="cards">
+        <h2>Cards - Dynamic Rendering</h2>
+
+        <!-- Add dropdown for category filtering -->
+        <div class="dropdown-container">
+            <button class="dropbtn">Kategorijos<i class="arrow-down"></i></button>
+            <div class="dropdown-content">
+                <a href="#">Gamta</a>
+                <a href="#">Lauko treniruokliai</a>
+                <a href="#">Slaptos vietos</a>
+            </div>
+        </div>
+
+        <!-- This container will be populated dynamically by JavaScript -->
+        <ul class="blocks-container">
+            <!-- Cards will be inserted here by loadSpots() -->
+        </ul>
+    </section>
+
+    </section>
+
+</main>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,2 @@
+DROP TABLE IF EXISTS spot;
+DROP TYPE IF EXISTS spot_category;

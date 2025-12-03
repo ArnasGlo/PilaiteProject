@@ -1,0 +1,19 @@
+version: "2"
+sql:
+  - engine: "postgresql"
+    queries: "db/queries"
+    schema: "db/migration"
+    gen:
+      go:
+        package: "db"
+        out: "internal/db"
+        sql_package: "pgx/v5"
+        emit_enum_valid_method: true
+        emit_all_enum_values: true
+        overrides:
+          - column: "location.latitude"
+            go_type: "float64"
+            nullable: false
+          - column: "location.longitude"
+            go_type: "float64"
+            nullable: false

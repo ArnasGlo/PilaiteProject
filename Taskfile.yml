@@ -1,0 +1,72 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  DB_URL: postgres://postgres:postgres@localhost:5432/pilaite?sslmode=disable
+  MIGRATION_PATH: db/migration
+
+tasks:
+  migrate-up:
+    desc: "Run all migrations"
+    cmds:
+      - echo "Applying all migrations..."
+      - migrate -path {{.MIGRATION_PATH}} -database "{{.DB_URL}}" up
+
+  migrate-up-one:
+    desc: "Run one migration step"
+    cmds:
+      - echo "Applying one migration step..."
+      - migrate -path {{.MIGRATION_PATH}} -database "{{.DB_URL}}" up 1
+
+  migrate-down-one:
+    desc: "Roll back exactly one migration step"
+    cmds:
+      - echo "Rollbacking one migration step..."
+      - migrate -path {{.MIGRATION_PATH}} -database "{{.DB_URL}}" down 1
+
+  migrate-down:
+    desc: "Drop all tables and migrations"
+    cmds:
+      - echo "Droping all tables and migrations"
+      - migrate -path {{.MIGRATION_PATH}} -database "{{.DB_URL}}" down -all
+
+  sqlc:
+    desc: "Generate Go code from SQL (models+queries)"
+    cmds:
+      - sqlc generate
+    silent: true
+
+  dev:
+    desc: "Run all migrations, generate code, and start dev server"
+    cmds:
+      - task migrate-up
+      - task sqlc
+      - air
+
+  clean-db-1:
+    desc: "Force the database to consider itself clean at version 1"
+    cmds:
+      - migrate -path {{.MIGRATION_PATH}} -database "{{.DB_URL}}" force 1
+
+  clean-db-2:
+    desc: "Force the database to consider itself clean at version 2"
+    cmds:
+      - migrate -path {{.MIGRATION_PATH}} -database "{{.DB_URL}}" force 2
+
+  clean-db-3:
+    desc: "Force the database to consider itself clean at version 3"
+    cmds:
+      - migrate -path {{.MIGRATION_PATH}} -database "{{.DB_URL}}" force 3
+
+  clean-db-4:
+    desc: "Force the database to consider itself clean at version 4"
+    cmds:
+      - migrate -path {{.MIGRATION_PATH}} -database "{{.DB_URL}}" force 4
+
+  clean-db-5:
+    desc: "Force the database to consider itself clean at version 5"
+    cmds:
+      - migrate -path {{.MIGRATION_PATH}} -database "{{.DB_URL}}" force 5
+
+
