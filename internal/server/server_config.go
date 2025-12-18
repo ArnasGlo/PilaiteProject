@@ -1,7 +1,7 @@
 package server
 
 import (
-	"PilaiteProject/internal/db_config"
+	"PilaiteProject/internal/dbConfig"
 	"context"
 	"fmt"
 	"net/http"
@@ -22,7 +22,7 @@ type ServerConfig struct {
 	Port string
 }
 
-func NewServer(serverConfiq ServerConfig, conn *db_config.Connection) *Server {
+func NewServer(serverConfiq ServerConfig, conn *dbConfig.Connection) *Server {
 
 	sessionManager := initSessionManager()
 

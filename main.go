@@ -1,7 +1,7 @@
 package main
 
 import (
-	"PilaiteProject/internal/db_config"
+	"PilaiteProject/internal/dbConfig"
 	_ "PilaiteProject/internal/handler"
 	"PilaiteProject/internal/server"
 	"context"
@@ -19,7 +19,7 @@ import (
 func main() {
 	ctx := context.Background()
 
-	conn, err := db_config.ConnectDb(ctx)
+	conn, err := dbConfig.ConnectDb(ctx)
 	if err != nil {
 		log.Fatal(err)
 	}

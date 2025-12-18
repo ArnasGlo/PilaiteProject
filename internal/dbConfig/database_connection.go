@@ -1,4 +1,4 @@
-package db_config
+package dbConfig
 
 import (
 	"PilaiteProject/internal/db"

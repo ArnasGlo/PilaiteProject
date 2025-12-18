@@ -1,7 +1,7 @@
 package server
 
 import (
-	"PilaiteProject/internal/db_config"
+	"PilaiteProject/internal/dbConfig"
 	"PilaiteProject/internal/handler"
 	"PilaiteProject/internal/service"
 	"net/http"
@@ -10,7 +10,7 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
-func setupRoutes(router *chi.Mux, conn *db_config.Connection, sessionManager *scs.SessionManager) {
+func setupRoutes(router *chi.Mux, conn *dbConfig.Connection, sessionManager *scs.SessionManager) {
 
 	userService := service.NewUserService(conn.Queries)
 
